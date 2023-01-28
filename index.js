@@ -129,3 +129,10 @@ store.dispatch(
 store.dispatch(removeTodoAction(1));
 store.dispatch(toggleTodoAction(0));
 store.dispatch(addGoalAction({}));
+store.dispatch(
+  addGoalAction({
+    id: 1,
+    name: "Lose 20 pounds",
+  })
+);
+store.dispatch(removeGoalAction(0));
