@@ -171,11 +171,14 @@ function addTodo () {
   store.dispatch(addTodoAction( {
     name,
     complete: false,
+    id: generateId()
   }))
 }
 
 function addGoal () {
-
+  const input = document.getElementById('goal')
+  const name = input.value
+  input.value = ''
 }
 
     </script>
