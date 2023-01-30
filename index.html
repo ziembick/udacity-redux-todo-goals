@@ -202,8 +202,13 @@ function addTodoToDOM (todo) {
 
 }
 
-function addGoalToDOM () {
+function addGoalToDOM (goal) {
+  const node = document.createElement('li')
+  const text = document.createTextNode(goal.name)
+  node.appendChild(text)
 
+  document.getElementById('goals')
+    .appendChild(node)
 }
 </script>
 </body>
