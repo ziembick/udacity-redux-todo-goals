@@ -7,20 +7,24 @@
     <title>Udacity Todos Goals</title>
 </head>
 <body>
-  <div>
-    <h1>Todo List</h1>
-    <input type="text" id="todo" placeholder="Add Todo">
-    <button id="todoBtn">Add Todo</button>
-    <ul id="todos"></ul>
-  </div>
-  <div>
-    <h1>Goals</h1>
-    <input type="text" id="goal" placeholder="Add Todo">
-    <button id="goalBtn">Add Todo</button>
-    <ul id="goals"></ul>
-  </div>
-    <script type="text/javascript">
-        // Library Code
+<div>
+  <h1>Todo List</h1>
+  <input type="text" id="todo" placeholder="Add Todo">
+  <button id="todoBtn">Add Todo</button>
+  <ul id="todos"></ul>
+</div>
+<div>
+  <h1>Goals</h1>
+  <input type="text" id="goal" placeholder="Add Todo">
+  <button id="goalBtn">Add Todo</button>
+  <ul id="goals"></ul>
+</div>
+<script type="text/javascript">
+  function generateId () {
+    return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+}
+
+// Library Code
 function createStore(reducer) {
   // The store should have four parts
   // 1. The state
@@ -160,11 +164,18 @@ store.subscribe(() => {
 // store.dispatch(removeGoalAction(0));
 
 function addTodo () {
+  const input = document.getElementById ('todo')
+  const name = input.value
+  input.value = ''
 
+  store.dispatch(addTodoAction( {
+    name,
+    complete: false,
+  }))
 }
 
 function addGoal () {
-  
+
 }
 
     </script>
