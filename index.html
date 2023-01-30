@@ -188,9 +188,23 @@ function addGoal () {
 
 document.getElementById('todoBtn')
   .addEventListener('click', addTodo)
-  
+
 document.getElementById('goalBtn')
   .addEventListener('click', addGoal)
+
+function addTodoToDOM (todo) {
+  const node = document.createElement('li')
+  const text = document.createTextNode(todo.name)
+  node.appendChild(text)
+
+  document.getElementById('todos')
+    .appendChild(node)
+
+}
+
+function addGoalToDOM () {
+
+}
 </script>
 </body>
 </html>
