@@ -198,6 +198,14 @@ document.getElementById('todoBtn')
 document.getElementById('goalBtn')
   .addEventListener('click', addGoal)
 
+
+function createRemoveButton (onClick) {
+  const removeBtn = document.createElement('button')
+  removeBtn.innerHTML = 'X'
+  removeBtn.addEventListener('click', onClick)
+  return removeBtn
+}
+
 function addTodoToDOM (todo) {
   const node = document.createElement('li')
   const text = document.createTextNode(todo.name)
