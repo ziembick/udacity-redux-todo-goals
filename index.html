@@ -179,8 +179,18 @@ function addGoal () {
   const input = document.getElementById('goal')
   const name = input.value
   input.value = ''
+
+  store.dispatch(addGoalAction( {
+    id: generateId(),
+    name,
+  }))
 }
 
-    </script>
+document.getElementById('todoBtn')
+  .addEventListener('click', addTodo)
+  
+document.getElementById('goalBtn')
+  .addEventListener('click', addGoal)
+</script>
 </body>
 </html>
