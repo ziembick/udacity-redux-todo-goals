@@ -18,7 +18,7 @@
       <ul id="todos"></ul>
     </div>
 
-    <hr/>
+    <hr />
 
     <div id="app"></div>
 
@@ -265,10 +265,28 @@
       const List = (props) => {
         return (
           <ul>
-            <li>LIST</li>  
+            <li>LIST</li>
           </ul>
-        )
-      }
+        );
+      };
+
+      const Todos = () => {
+        return (
+          <div>
+            Todos
+            <List />
+          </div>
+        );
+      };
+
+      const Goals = () => {
+        return (
+          <div>
+            Goals
+            <List />
+          </div>
+        );
+      };
     </script>
   </body>
 </html>
