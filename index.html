@@ -298,7 +298,8 @@
       const Goals = () => {
         return (
           <div>
-            Goals
+            <h1>Goals</h1>
+            <input type="text" placeholder="Add Goal" ref={inputRef}/>
             <List />
           </div>
         );
@@ -308,7 +309,7 @@
         return (
           <div>
             <Todos store={props.store} />
-            <Goals />
+            <Goals store={props.store}/>
           </div>
         );
       };
