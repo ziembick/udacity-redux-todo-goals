@@ -273,6 +273,18 @@
       const Todos = (props) => {
         const inputRef = React.useRef();
 
+        const addItem = (e) => {
+          e.preventDefault()
+          const name = inputRef.current.value;
+          inputRef.current.value = "";
+
+          props.store.dispatch(addTodoAction({
+            name,
+            complete: false,
+            id: generateId(),
+          }))
+        }
+
         return (
           <div>
             <h1>Todo List</h1>
