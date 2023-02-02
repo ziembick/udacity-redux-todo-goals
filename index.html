@@ -297,12 +297,20 @@
         );
       };
 
-      const Goals = () => {
+      const Goals = (props) => {
         const inputRef = React.useRef();
 
         const addItem = (e) => {
           e.preventDefault();
           const name = inputRef.current.value;
+          inputRef.current.value = "";
+
+          props.store.dispatch(
+            addGoalAction({
+              id: generateId(),
+              name,
+            })
+          );
         };
 
         return (
