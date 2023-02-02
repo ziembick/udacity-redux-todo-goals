@@ -274,16 +274,18 @@
         const inputRef = React.useRef();
 
         const addItem = (e) => {
-          e.preventDefault()
+          e.preventDefault();
           const name = inputRef.current.value;
           inputRef.current.value = "";
 
-          props.store.dispatch(addTodoAction({
-            name,
-            complete: false,
-            id: generateId(),
-          }))
-        }
+          props.store.dispatch(
+            addTodoAction({
+              name,
+              complete: false,
+              id: generateId(),
+            })
+          );
+        };
 
         return (
           <div>
@@ -296,10 +298,17 @@
       };
 
       const Goals = () => {
+        const inputRef = React.useRef();
+
+        const addItem = (e) => {
+          e.preventDefault();
+          const name = inputRef.current.value;
+        };
+
         return (
           <div>
             <h1>Goals</h1>
-            <input type="text" placeholder="Add Goal" ref={inputRef}/>
+            <input type="text" placeholder="Add Goal" ref={inputRef} />
             <button onClick={addItem}>Add Goal</button>
             <List />
           </div>
@@ -310,7 +319,7 @@
         return (
           <div>
             <Todos store={props.store} />
-            <Goals store={props.store}/>
+            <Goals store={props.store} />
           </div>
         );
       };
