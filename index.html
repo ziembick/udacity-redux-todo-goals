@@ -292,7 +292,7 @@
             <h1>Todo List</h1>
             <input type="text" placeholder="Add Todo" ref={inputRef} />
             <button onClick={addItem}>Add Todo</button>
-            <List />
+            <List item={props.todos}/>
           </div>
         );
       };
