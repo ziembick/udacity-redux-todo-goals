@@ -293,6 +293,11 @@
           );
         };
 
+
+        const removeItem = (todo) => {
+          props.store.dispatch(removeTodoAction(todo.id))
+        }
+
         return (
           <div>
             <h1>Todo List</h1>
@@ -318,6 +323,10 @@
             })
           );
         };
+
+        const removeItem = (goals) => {
+          props.store.dispatch(removeGoalAction(goal.id))
+        }
 
         return (
           <div>
