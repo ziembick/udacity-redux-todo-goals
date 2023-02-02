@@ -303,7 +303,7 @@
             <h1>Todo List</h1>
             <input type="text" placeholder="Add Todo" ref={inputRef} />
             <button onClick={addItem}>Add Todo</button>
-            <List items={props.todos} />
+            <List remove={removeItem} items={props.todos} />
           </div>
         );
       };
@@ -333,7 +333,7 @@
             <h1>Goals</h1>
             <input type="text" placeholder="Add Goal" ref={inputRef} />
             <button onClick={addItem}>Add Goal</button>
-            <List items={props.goals} />
+            <List remove={removeItem} items={props.goals} />
           </div>
         );
       };
