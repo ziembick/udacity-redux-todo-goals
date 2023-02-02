@@ -269,7 +269,7 @@
               props.items.map((item) => (
                 <li key={item.id}>
                   <span>{item.name}</span>
-                  <button onClick={}>X</button>
+                  <button onClick={() => props.remove(item)}>X</button>
                 </li>
               ))}
           </ul>
@@ -293,10 +293,9 @@
           );
         };
 
-
         const removeItem = (todo) => {
-          props.store.dispatch(removeTodoAction(todo.id))
-        }
+          props.store.dispatch(removeTodoAction(todo.id));
+        };
 
         return (
           <div>
@@ -325,8 +324,8 @@
         };
 
         const removeItem = (goals) => {
-          props.store.dispatch(removeGoalAction(goal.id))
-        }
+          props.store.dispatch(removeGoalAction(goals.id));
+        };
 
         return (
           <div>
