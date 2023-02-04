@@ -208,6 +208,11 @@
 
         const toggleItem = (id) => {
           props.store.dispatch(toggleTodoAction(id));
+
+          return API.saveTodoToggle(id).catch(() => {
+            props.store.dispatch(toggleTodoAction(id))
+            alert("An error occurred. Try again.")
+          })
         };
 
         return (
@@ -236,8 +241,9 @@
           );
         };
 
-        const removeItem = (goals) => {
-          props.store.dispatch(removeGoalAction(goals.id));
+        const removeItem = (goal) => {
+          props.store.dispatch(removeGoalAction(goal.id));
+
           return API.deleteGoal(goal.id).catch(() => {
             props.store.dispatch(addGoalAction(goal));
             alert("An error occurred. Try agin.");
