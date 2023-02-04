@@ -227,7 +227,7 @@
         React.useEffect(() => {
           Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
             ([todos, goals]) => {
-              console.log("Todos".todos);
+              console.log("Todos",todos);
               console.log("Goals", goals);
             }
           );
