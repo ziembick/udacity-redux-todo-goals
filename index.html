@@ -198,7 +198,9 @@
         };
 
         const removeItem = (todo) => {
-          props.store.dispatch(removeTodoAction(todo.id));
+          return API.deleteTodo(todo.id).then(() => {
+            props.store.dispatch(removeTodoAction(todo.id));
+          });
         };
 
         const toggleItem = (id) => {
@@ -263,7 +265,7 @@
         const { todos, goals, loading } = props.store.getState();
 
         if (loading === true) {
-          return <h3>Loading</h3>
+          return <h3>Loading</h3>;
         }
 
         return (
