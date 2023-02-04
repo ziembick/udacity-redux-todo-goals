@@ -85,6 +85,18 @@
         };
       }
 
+      function handleAddGoal(name, cb) {
+        return (dispatch) => {
+          return API.saveGoal(name)
+            .then((goal) => {
+              dispatch(addGoalAction(goal));
+            })
+            .catch(() => {
+              alert("There was an error. Try again.");
+            });
+        };
+      }
+
       function todos(state = [], action) {
         switch (action.type) {
           case ADD_TODO:
@@ -159,8 +171,6 @@
         console.groupEnd();
         return result;
       };
-
-     
 
       const store = Redux.createStore(
         Redux.combineReducers({
@@ -238,14 +248,13 @@
 
         const addItem = (e) => {
           e.preventDefault();
-          return API.saveGoal(inputRef.current.value)
-            .then((goal) => {
-              props.store.dispatch(addGoalAction(goal));
-              inputRef.current.value = "";
-            })
-            .catch(() => {
-              alert("There was an error. Try again.");
-            });
+
+          props.store.dispatch(
+            handleAddGoal(
+              inputRef.current.value,
+              () => (inputRef.current.value = "")
+            )
+          );
         };
 
         const removeItem = (goal) => {
