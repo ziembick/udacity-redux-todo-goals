@@ -97,6 +97,17 @@
         };
       }
 
+      function handleDeleteGoal(goal) {
+        return (dispatch) => {
+          dispatch(removeGoalAction(goal.id));
+
+          return API.deleteGoal(goal.id).catch(() => {
+            dispatch(addGoalAction(goal));
+            alert("An error occurred. Try again.");
+          });
+        };
+      }
+
       function todos(state = [], action) {
         switch (action.type) {
           case ADD_TODO:
@@ -258,12 +269,7 @@
         };
 
         const removeItem = (goal) => {
-          props.store.dispatch(removeGoalAction(goal.id));
-
-          return API.deleteGoal(goal.id).catch(() => {
-            props.store.dispatch(addGoalAction(goal));
-            alert("An error occurred. Try agin.");
-          });
+          props.store.dispatch(handleDeleteGoal(goal));
         };
 
         return (
