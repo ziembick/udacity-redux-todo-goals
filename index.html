@@ -100,13 +100,13 @@
 
       function handleToggle(id) {
         return (dispatch) => {
-          dispatch(toggleTodoAction(id))
+          dispatch(toggleTodoAction(id));
 
-          return API.saveTodoToggle(id).catch (() => {
-            dispatch(toggleTodoAction(id))
-            alert("An error occurred. Try again.")
-          })
-        }
+          return API.saveTodoToggle(id).catch(() => {
+            dispatch(toggleTodoAction(id));
+            alert("An error occurred. Try again.");
+          });
+        };
       }
 
       function handleAddGoal(name, cb) {
@@ -133,14 +133,14 @@
         };
       }
 
-      function handleInitialData () {
+      function handleInitialData() {
         return (dispatch) => {
           Promise.all([API.fetchTodos(), API.fetchGoals()]).then(
             ([todos, goals]) => {
               dispatch(receiveDataAction(todos, goals));
             }
           );
-        }
+        };
       }
 
       function todos(state = [], action) {
@@ -335,9 +335,17 @@
         );
       };
 
-      const Context = React.createContext()
+      const Context = React.createContext();
 
-      ReactDOM.render(<App store={store} />, document.getElementById("app"));
+      const Provider = (props) => {
+        return (
+          <Context.Provider value={props.store}>
+            {props.children}
+          </Context.Provider>
+        );
+      };
+
+      ReactDOM.render(<Provider><App store={store} /></Provider>, document.getElementById("app"));
     </script>
   </body>
 </html>
