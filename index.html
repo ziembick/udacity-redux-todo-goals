@@ -286,15 +286,13 @@
         return (
           <Context.Consumer>
             {(store) => {
-              const { todos } = store.getState()
+              const { todos } = store.getState();
 
-              return (
-                <Todos todos={todos} dispatch={store.dispatch}/>
-              )
+              return <Todos todos={todos} dispatch={store.dispatch} />;
             }}
           </Context.Consumer>
-        )
-      }
+        );
+      };
       const Goals = (props) => {
         const inputRef = React.useRef();
 
@@ -346,9 +344,9 @@
           });
         }, []);
 
-        const { loading } = props.store.getState();
+        
 
-        if (loading === true) {
+        if (props.loading === true) {
           return <h3>Loading</h3>;
         }
 
@@ -360,15 +358,9 @@
         );
       };
 
-      const ConnectedApp = () => {
-        return (
-          <Context.Consumer>
-            {(store) => {
-              <App store={store} />;
-            }}
-          </Context.Consumer>
-        );
-      };
+      const ConnectedApp = connect((state) => ({
+        loading: state.loading,
+      }))(App);
 
       const Context = React.createContext();
 
