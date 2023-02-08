@@ -285,7 +285,7 @@
       const ConnectedTodos = connect((state) => ({
         todos: state.todos,
       }))(Todos);
-     
+
       const Goals = (props) => {
         const inputRef = React.useRef();
 
@@ -341,6 +341,37 @@
 
       const Context = React.createContext();
 
+      function connect(mapStateToProps) {
+        return (Component) => {
+          const Receiver = (props) => {
+            const [value, setValue] = React.useState(0);
+
+            React.useEffect(() => {
+              let unmounted = false;
+              const { subscribe } = props.store;
+
+              const unsubscribe = subscribe(() => {
+                setValue((value) => value + 1);
+              });
+
+              return () => {
+                unsubscribe()
+                unmounted = true;
+              }
+            }, []);
+          };
+
+          const ConnectedComponent = () => {
+            return (
+              <Context.Consumer>
+                {(store) => {
+                  <Receiver store={store} />;
+                }}
+              </Context.Consumer>
+            );
+          };
+        };
+      }
       const Provider = (props) => {
         return (
           <Context.Provider value={props.store}>
