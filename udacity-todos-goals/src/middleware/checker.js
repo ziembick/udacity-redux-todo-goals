@@ -1,7 +1,7 @@
 import { ADD_GOAL } from "../actions/goals";
 import { ADD_TODO } from "../actions/todos";
 
-export const checker = (store) => (next) => (action) => {
+const checker = (store) => (next) => (action) => {
   if (action.type === ADD_GOAL) {
     alert("That's a great goal!");
   }
@@ -25,3 +25,5 @@ export const checker = (store) => (next) => (action) => {
 
   return next(action);
 };
+
+export default checker;
